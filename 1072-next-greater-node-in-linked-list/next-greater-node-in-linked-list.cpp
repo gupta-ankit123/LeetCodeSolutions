@@ -17,17 +17,23 @@ public:
             head=head->next;
         }
         stack<int> st;
-        vector<int> ans(ll.size());
+        // vector<int> ans(ll.size());
 
         for(int i=0;i<ll.size();i++){
            while(!st.empty() && ll[i]>ll[st.top()]){
             int kids=st.top();
             st.pop();
-            ans[kids]=ll[i];
+            ll[kids]=ll[i];
            }
+           
            st.push(i);
         }
-        return ans;
+        while(!st.empty()){
+            ll[st.top()]=0;
+            st.pop();
+        }
+        ll[ll.size()-1]=0;
+        return ll;
 
         
     }
