@@ -3,41 +3,35 @@ public:
     MyStack() {
         
     }
-    queue<int>q1;
-    queue<int> q2;
-    
+    queue<int> q;
     void push(int x) {
-        //push the element in q2
-        q2.push(x);
-        //push all the elements of q1 to q2
-        while(!q1.empty()){
-            q2.push(q1.front());
-            q1.pop();
+        //push the element to q
+        q.push(x);
+        for(int i=0;i<q.size()-1;i++){
+            int front=q.front();
+            q.pop();
+            q.push(front);
         }
-
-        //push all the elements of q2 to q1
-        while(!q2.empty()){
-            q1.push(q2.front());
-            q2.pop();
-        }   
+        
     }
     
     int pop() {
         int pop=-1;
-        pop=q1.front();
-        q1.pop();
+        pop=q.front();
+        q.pop();
         return pop;
         
     }
     
     int top() {
-        int top=q1.front();
-        return top;
+        int front=q.front();
+        return front;
         
     }
     
     bool empty() {
-        return q1.empty();
+        return q.empty();
+        
     }
 };
 
