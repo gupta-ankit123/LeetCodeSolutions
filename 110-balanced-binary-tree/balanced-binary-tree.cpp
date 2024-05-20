@@ -11,38 +11,32 @@
  */
 class Solution {
 public:
-    int height(TreeNode*root){
-        if(root==NULL){
+    int height(TreeNode* root){
+        if(!root){
             return 0;
         }
         int left=height(root->left);
         int right=height(root->right);
         int ans=max(left,right)+1;
         return ans;
+
     }
     bool isBalanced(TreeNode* root) {
         if(root==NULL){
             return true;
         }
+        int left=height(root->left);
+        int right=height(root->right);
+        int diff=abs(left-right);
 
-        //1 case
-        int leftHeight=height(root->left);
-        int rightHeight=height(root->right);
-        int diff=abs(leftHeight-rightHeight);
-
-        bool ans1=(diff<=1);
-
-        //Recursion
+        bool ans=(diff<=1);
         bool leftAns=isBalanced(root->left);
         bool rightAns=isBalanced(root->right);
 
-        if(ans1&& leftAns&&rightAns){
+        if(ans&&leftAns&&rightAns){
             return true;
         }
-        else{
-            return false;
-        }
-
+        return false;
 
         
     }
