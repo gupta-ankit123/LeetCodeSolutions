@@ -11,7 +11,8 @@
  */
 class Solution {
 public:
-    bool isMirror(TreeNode* left,TreeNode* right){
+
+    bool solve(TreeNode* left,TreeNode* right){
         if(left==NULL && right==NULL){
             return true;
         }
@@ -21,17 +22,18 @@ public:
         if(left==NULL && right!=NULL){
             return false;
         }
-
-        if(left->val==right->val && isMirror(left->left,right->right) && isMirror(left->right,right->left)){
+        if(left->val!=right->val){
+            return false;
+        }
+        if(solve(left->left,right->right)&& solve(left->right,right->left)){
             return true;
         }
-
         return false;
     }
     bool isSymmetric(TreeNode* root) {
         if(root==NULL){
             return true;
         }
-        return isMirror(root->left,root->right);
+        return solve(root->left,root->right);
     }
 };
