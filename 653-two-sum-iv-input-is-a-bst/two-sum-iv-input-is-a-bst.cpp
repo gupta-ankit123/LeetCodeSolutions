@@ -16,9 +16,18 @@ public:
         if(!root){
             return ans;
         }
-        inorder(root->left,ans);
-        ans.push_back(root->val);
-        inorder(root->right,ans);
+        stack<TreeNode*> st;
+        TreeNode* curr=root;
+        while(curr!=NULL || !st.empty()){
+            while(curr){
+                st.push(curr);
+                curr=curr->left;
+            }
+            curr=st.top();
+            st.pop();
+            ans.push_back(curr->val);
+            curr=curr->right;
+        }
         return ans;
     }
     bool findTarget(TreeNode* root, int k) {
