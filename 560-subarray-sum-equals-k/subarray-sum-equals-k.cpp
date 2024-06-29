@@ -8,9 +8,9 @@ public:
         for(int i=0;i<nums.size();i++){
             sum+=nums[i];
             int rem=sum-k;
-            if(mpp.find(rem)!=mpp.end()){
-                count+=mpp[rem];
-            }
+            
+            count+=mpp[rem];
+            
             mpp[sum]++;
         }
         return count;
