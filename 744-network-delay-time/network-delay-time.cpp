@@ -18,9 +18,9 @@ public:
             pq.pop();
             int time=it.first;
             int node=it.second;
-            if(time>dist[node]){
-                continue;
-            }
+            // if(time>dist[node]){
+            //     continue;
+            // }
             
 
             for(auto iter:adj[node]){
