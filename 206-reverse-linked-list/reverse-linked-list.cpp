@@ -19,15 +19,13 @@ public:
         }
         ListNode* prev=NULL;
         ListNode* curr=head;
-        ListNode* temp=head->next;
+        ListNode* temp=NULL;
 
         while(curr!=NULL){
+            temp=curr->next;
             curr->next=prev;
             prev=curr;
             curr=temp;
-            if(temp!=NULL){
-                temp=temp->next;
-            }
         }
         return prev;
     }
