@@ -12,8 +12,11 @@ public:
         if(head==NULL){
             return false;
         }
+        if(head->next==NULL){
+            return false;
+        }
         ListNode* curr=head;
-        ListNode* temp=head->next;
+        ListNode* temp=head;
 
         while(temp!=NULL){
             temp=temp->next;
