@@ -13,19 +13,19 @@ public:
             i++;
             j++;
         }
-        if(i<n){
+        
             while(i<n){
                 ans+=word1[i];
                 i++;
             }
-        }
+        
 
-        if(j<m){
+        
             while(j<m){
                 ans+=word2[j];
                 j++;
             }
-        }
+        
         return ans;
     }
 };
