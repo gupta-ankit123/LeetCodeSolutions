@@ -1,7 +1,7 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        map<ListNode*,int>mpp;
+        unordered_map<ListNode*,int>mpp;
         ListNode* temp1=headA;
         while(temp1!=NULL){
             mpp[temp1]++;
