@@ -1,31 +1,36 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
-    void rightView(TreeNode* root,vector<int> &ans,int level){
-        if(root==NULL){
-            return ;
+
+    void level(TreeNode* root,vector<vector<int>>&ans){
+        if(root==NULL) return;
+
+        queue<pair<TreeNode*,int>>q;
+        q.push({root,0});
+        while(!q.empty()){
+            TreeNode* node=q.front().first;
+            int level=q.front().second;
+            q.pop();
+            if(level>=ans.size()){
+                ans.push_back({});
+            }
+            ans[level].push_back(node->val);
+            if(node->left){
+                q.push({node->left,level+1});
+            }
+            if(node->right){
+                q.push({node->right,level+1});
+            }
         }
-        if(ans.size()==level){
-            ans.push_back(root->val);
-        }
-        //right
-        rightView(root->right,ans,level+1);
-        rightView(root->left,ans,level+1);
+
     }
     vector<int> rightSideView(TreeNode* root) {
-        vector<int> ans;
-        int level=0;
-        rightView(root,ans,level);
-        return ans;
+        vector<vector<int>> ans;
+        level(root,ans);
+        vector<int> temp;
+        for(auto it:ans){
+            temp.push_back(it.back());
+        }
+        return temp;
+
     }
 };
