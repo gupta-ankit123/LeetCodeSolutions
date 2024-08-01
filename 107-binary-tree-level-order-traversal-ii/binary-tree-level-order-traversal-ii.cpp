@@ -26,16 +26,8 @@ public:
             }
 
         }
-        stack<vector<int>>st;
-        for(auto it:ans){
-            st.push(it);
-        }
-        vector<vector<int>> res;
-
-        while(!st.empty()){
-            res.push_back(st.top());
-            st.pop();
-        }
-        return res;
+        reverse(ans.begin(),ans.end());
+        return ans;
+       
     }
 };
