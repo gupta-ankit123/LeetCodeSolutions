@@ -1,14 +1,15 @@
 class Solution {
 public:
-    int maxProfit(std::vector<int>& prices) {
-        int minPrice = INT_MAX; // Initialize minimum price as maximum possible
-        int maxProfit = 0; // Initialize maximum profit as 0
-        
-        for (int i = 0; i < prices.size(); ++i) {
-            minPrice = std::min(minPrice, prices[i]); // Update minimum price if current price is lower
-            maxProfit = std::max(maxProfit, prices[i] - minPrice); // Update maximum profit if selling at current price gives higher profit
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int minPrice=prices[0];
+        int maxProfit=0;
+
+        for(int i=1;i<n;i++){
+            minPrice=min(minPrice,prices[i]);
+            int profit=prices[i]-minPrice;
+            maxProfit=max(maxProfit,profit);
         }
-        
         return maxProfit;
     }
 };
