@@ -4,16 +4,11 @@ public:
         map<int,int> mpp;
         vector<int> ans;
         int n=nums.size();
-        int d=n/3;
+        int d=floor(n/3)+1;
 
         for(int i=0;i<n;i++){
             mpp[nums[i]]++;
-        }
-
-        for(auto it:mpp){
-            if(it.second>d){
-                ans.push_back(it.first);
-            }
+            if(mpp[nums[i]]==d) ans.push_back(nums[i]);
         }
         return ans;
     }
