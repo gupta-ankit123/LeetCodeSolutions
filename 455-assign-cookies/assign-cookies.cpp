@@ -6,15 +6,14 @@ public:
         sort(g.begin(),g.end());
         sort(s.begin(),s.end());
         while(i<n&&j<m){
-            while(i<n&&j<m&&s[j]<g[i]){
-                j++;
-            }
-            if(i<n&&j<m&&s[j]>=g[i]){
-                cnt++;
-                i++;
-                j++;
+           if(s[j]>=g[i]){
+            cnt++;
+            j++;
+            i++;
            }
-            
+           else{
+            j++;
+           }
         }
         return cnt;
     }
