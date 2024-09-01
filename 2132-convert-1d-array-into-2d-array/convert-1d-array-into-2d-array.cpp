@@ -8,7 +8,7 @@ public:
 
         while(j<=m && i<arr.size()){
             vector<int> temp;
-            for(int k=i;k<(n*j)&&k<arr.size();k++){
+            for(int k=i;k<(n*j);k++){
                 temp.push_back(arr[k]);
             }
             i=j*n;
