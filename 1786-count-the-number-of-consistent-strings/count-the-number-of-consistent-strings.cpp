@@ -11,6 +11,7 @@ public:
             for(int i=0;i<it.length();i++){
                 if(mpp.find(it[i])==mpp.end()){
                     flag=false;
+                    break;
                 }
             }
             if(flag){
