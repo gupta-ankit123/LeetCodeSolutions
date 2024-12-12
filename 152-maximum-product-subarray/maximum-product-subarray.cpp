@@ -3,14 +3,14 @@ public:
     int maxProduct(vector<int>& nums) {
         int maxi=INT_MIN;
         int n=nums.size();
+        int first=1;
+        int second=1;
         for(int i=0;i<n;i++){
-            int prod=nums[i];
-            maxi=max(maxi,prod);
-            for(int j=i+1;j<n;j++){
-                
-                prod=prod*nums[j];
-                maxi=max(maxi,prod);
-            }
+            if(first==0) first=1;
+            if(second==0) second=1;
+            first=first*nums[i];
+            second=second*nums[n-i-1];
+            maxi=max(maxi,max(first,second));
         }
         return maxi;
     }
